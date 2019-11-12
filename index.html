@@ -7,6 +7,17 @@
     </title>
 </head>
 <style type="text/css">
+
+@font-face {
+    font-family: 'wATCHMEn';
+    src: url('-wATCHMEn.woff2') format('woff2'),
+        url('-wATCHMEn.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
     html, body, .yellow{
         -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
@@ -42,9 +53,11 @@
         text-align: center;
         /* vertical-align: middle ; */
         color: black;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: calc(100vw / 5);
-
+        font-size: 15vw;
+        font-family: 'wATCHMEn';
+  
+        -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 
         -moz-user-select: none; /* Firefox */
       -ms-user-select: none; /* Internet Explorer */
@@ -84,9 +97,11 @@ img{
         let blackdiv = document.getElementById("black");
         let img = document.getElementById("blood")
         let size = blackdiv.clientWidth;
+        
+
         document.addEventListener("mousemove", function(event){
-                    let x = event.clientX - size/2;
-                    let y = event.clientY - size/2;                    
+                    let x = event.clientX - size/4;
+                    let y = event.clientY - size/4;                    
                     if ( typeof x !== 'undefined' ){
                         blackdiv.style.left = x + "px";
                         blackdiv.style.top = y + "px";
