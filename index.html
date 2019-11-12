@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WATCHMEN
+    </title>
+</head>
+<style type="text/css">
+    html, body, .yellow{
+        -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+        position: relative;
+        margin: 0px 0px;
+        height: 100%;
+        width: 100%
+    }
+
+    .yellow{ 
+        position: relative;
+        z-index: -2;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #black{
+        position: fixed;
+        z-index: 1;
+        width: 100vh;
+        height: 100vh;
+        background-color: yellow;
+        border-radius: 100%;
+    }
+
+    .text{
+        position: relative;
+        z-index: 8;
+        width: 100%;
+        text-align: center;
+        /* vertical-align: middle ; */
+        color: black;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: calc(100vw / 5);
+
+
+        -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer */
+   -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+
+    }
+
+</style>
+
+<body>
+    <div class="yellow">
+        <div class="text">WATCHMEN</div>
+
+        <div id="black">
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        let blackdiv = document.getElementById("black")
+        let size = blackdiv.clientWidth;
+        document.addEventListener("mousemove", function(event){
+                    let x = event.clientX - size/2;
+                    let y = event.clientY - size/2;                    
+                    if ( typeof x !== 'undefined' ){
+                        blackdiv.style.left = x + "px";
+                        blackdiv.style.top = y + "px";
+                    }
+                }, false)
+                ;
+    </script>
+</body>
+</html>
