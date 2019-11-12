@@ -36,7 +36,7 @@
     }
 
     .text{
-        position: relative;
+        position: fixed;
         z-index: 8;
         width: 100%;
         text-align: center;
@@ -51,22 +51,30 @@
    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
   -webkit-user-select: none; /* Chrome, Safari, and Opera */
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
-
     }
+
+img{         
+    position: fixed;
+    width: 50vh;
+    height: 50vh;
+    z-index: 999;
+}
 
 </style>
 
 <body>
-    <div class="yellow">
+    <div class="yellow">            
+        <img id="blood" src="./blood2.png" ></img>
+
         <div class="text">WATCHMEN</div>
 
         <div id="black">
         </div>
-
     </div>
 
     <script type="text/javascript">
         let blackdiv = document.getElementById("black");
+        let img = document.getElementById("blood")
         let size = blackdiv.clientWidth;
         document.addEventListener("mousemove", function(event){
                     let x = event.clientX - size/2;
@@ -74,6 +82,9 @@
                     if ( typeof x !== 'undefined' ){
                         blackdiv.style.left = x + "px";
                         blackdiv.style.top = y + "px";
+                        blood.style.left = x + "px";
+                        blood.style.top = y + "px";
+
                     }
                 }, false);
         
@@ -82,7 +93,6 @@
         let text = document.querySelector('.text');
         document.addEventListener("click", function(event){
             let color1 = text.style.color || 'yellow';
-            console.log(color1);
             let color2 = "black";
             if(color1 === "black"){
                 color2 = "yellow"
