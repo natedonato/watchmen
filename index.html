@@ -53,7 +53,13 @@
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
     }
 
-img{         
+img{        
+    -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer */
+   -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+  -webkit-user-select: none; /* Chrome, Safari, and Opera */
+  -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+
     position: fixed;
     width: 50vh;
     height: 50vh;
@@ -92,7 +98,7 @@ img{
         let yellowdiv = document.querySelector(".yellow");
         let text = document.querySelector('.text');
         document.addEventListener("click", function(event){
-            let color1 = text.style.color || 'yellow';
+            let color1 = text.style.color || 'black';
             let color2 = "black";
             if(color1 === "black"){
                 color2 = "yellow"
