@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WATCHMEN
     </title>
@@ -14,13 +13,14 @@
         position: relative;
         margin: 0px 0px;
         height: 100%;
-        width: 100%
+        width: 100%;
+        cursor: none;
     }
 
     .yellow{ 
         position: relative;
         z-index: -2;
-        background-color: black;
+        background-color: yellow;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -31,7 +31,7 @@
         z-index: 1;
         width: 100vh;
         height: 100vh;
-        background-color: yellow;
+        background: black;
         border-radius: 100%;
     }
 
@@ -41,7 +41,7 @@
         width: 100%;
         text-align: center;
         /* vertical-align: middle ; */
-        color: black;
+        color: yellow;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: calc(100vw / 5);
 
@@ -66,7 +66,7 @@
     </div>
 
     <script type="text/javascript">
-        let blackdiv = document.getElementById("black")
+        let blackdiv = document.getElementById("black");
         let size = blackdiv.clientWidth;
         document.addEventListener("mousemove", function(event){
                     let x = event.clientX - size/2;
@@ -75,8 +75,24 @@
                         blackdiv.style.left = x + "px";
                         blackdiv.style.top = y + "px";
                     }
-                }, false)
-                ;
+                }, false);
+        
+        let body = document.querySelector("body");
+        let yellowdiv = document.querySelector(".yellow");
+        let text = document.querySelector('.text');
+        document.addEventListener("click", function(event){
+            let color1 = text.style.color || 'yellow';
+            console.log(color1);
+            let color2 = "black";
+            if(color1 === "black"){
+                color2 = "yellow"
+            }
+
+            blackdiv.style.backgroundColor = color1;
+            text.style.color = color2;
+            yellowdiv.style.backgroundColor = color2;
+        });
+
     </script>
 </body>
 </html>
