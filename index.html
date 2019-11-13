@@ -46,8 +46,15 @@
         border-radius: 100%;
     }
 
-    .text{
+    .textContainer{
         position: fixed;
+        z-index: 8;
+        width: 100%;
+
+    }
+
+    .text{
+        position: relative;
         z-index: 8;
         width: 100%;
         text-align: center;
@@ -64,6 +71,27 @@
    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
   -webkit-user-select: none; /* Chrome, Safari, and Opera */
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+    }
+
+    .text2{
+        color: black;
+        font-size: 3vw;
+        font-family: 'wATCHMEn';
+        text-align: center;
+
+        /* border: solid black 5vw; */
+        /* padding: 2vw; */
+        width: fit-content;
+        margin: 2vw auto -5vw;
+    }
+
+    .text2 > a{
+                text-decoration: none;
+
+    }
+
+    .text2:hover{
+        color: white;
     }
 
 img{        
@@ -87,7 +115,11 @@ img{
     <div class="yellow">            
         <img id="blood" src="./blood2.png" ></img>
 
-        <div class="text">WATCHMEN</div>
+        <div class="textContainer">
+            <div class="text">WATCHMEN</div>
+            <div class="text2"><a id="link" href="./main/characters.html">ENTER SITE</a></div>
+        </div>
+
 
         <div id="black">
         </div>
@@ -97,9 +129,32 @@ img{
         let blackdiv = document.getElementById("black");
         let img = document.getElementById("blood")
         let size = blackdiv.clientWidth;
+        let text2 = document.querySelector(".text2")
+
+        function isOver(element, e) {
+            var left = element.offsetLeft,
+                top = 0;
+                parent = element;
+
+                while (parent) {
+                    top += parent.offsetTop;
+                    parent = parent.offsetParent;
+                }
+
+                var right = left + element.clientWidth,
+                bottom = top + element.clientHeight;
+            return (e.pageX > left && e.pageX < right && e.pageY > top && e.pageY < bottom);
+        };
         
 
         document.addEventListener("mousemove", function(event){
+
+                if(isOver(text2, event)) {
+                    text2.style.color = "white";
+                } else {
+                    text2.style.color = "black";
+                };
+
                     let x = event.clientX - size/4;
                     let y = event.clientY - size/4;                    
                     if ( typeof x !== 'undefined' ){
@@ -115,6 +170,15 @@ img{
         let yellowdiv = document.querySelector(".yellow");
         let text = document.querySelector('.text');
         document.addEventListener("click", function(event){
+            if(isOver(text2, event)) {
+                console.log("yep");
+                window.location = document.getElementById("link").href;
+            }
+
+
+
+
+
             let color1 = text.style.color || 'black';
             let color2 = "black";
             if(color1 === "black"){
